@@ -1,6 +1,142 @@
 import tkinter
 from tkinter import *
+from tkinter import  messagebox
 
+
+val = ""                        #FOR STORING LABEL VALUES
+A = 0
+operator = ""
+
+"""
+FOR DISPLAYING TEXT ON LABEL
+"""
+
+def btn_1_isclicked():
+        global val
+        val = val + "1"
+        data.set(val)
+
+def btn_2_isclicked():
+        global val
+        val = val + "2"
+        data.set(val)
+
+def btn_3_isclicked():
+        global val
+        val = val + "3"
+        data.set(val)
+
+def btn_4_isclicked():
+        global val
+        val = val + "4"
+        data.set(val)
+
+def btn_5_isclicked():
+        global val
+        val = val + "5"
+        data.set(val)
+
+def btn_6_isclicked():
+        global val
+        val = val + "6"
+        data.set(val)
+
+def btn_7_isclicked():
+        global val
+        val = val + "7"
+        data.set(val)
+
+def btn_8_isclicked():
+        global val
+        val = val + "8"
+        data.set(val)
+
+def btn_9_isclicked():
+        global val
+        val = val + "9"
+        data.set(val)
+
+def btn_0_isclicked():
+        global val
+        val = val + "0"
+        data.set(val)
+
+def btn_plus_clicked():
+        global A
+        global operator
+        global val
+        A = int(val)
+        operator = "+"
+        val = val + "+"
+        data.set(val)
+
+def btn_minus_clicked():
+        global A
+        global operator
+        global val
+        A = int(val)
+        operator = "-"
+        val = val + "-"
+        data.set(val)
+
+def btn_mul_clicked():
+        global A
+        global operator
+        global val
+        A = int(val)
+        operator = "*"
+        val = val + "*"
+        data.set(val)
+
+def btn_divide_clicked():
+        global A
+        global operator
+        global val
+        A = int(val)
+        operator = "/"
+        val = val + "/"
+        data.set(val)
+
+def c_pressed():
+        global A
+        global operator
+        global val
+        val = ""
+        A = 0
+        operator = ""
+        data.set(val)
+
+def result():
+        global A
+        global operator
+        global val
+        val2 = val
+        if operator == "+":
+                x = int((val2.split("+")[1]))
+                C = A + x
+                data.set(C)
+                val = str(C)
+        elif operator == "-":
+                x = int((val2.split("-")[1]))
+                C = A - x
+                data.set(C)
+                val = str(C)
+        elif operator == "*":
+                x = int((val2.split("*")[1]))
+                C = A * x
+                data.set(C)
+                val = str(C)
+        elif operator == "/":
+                x = int((val2.split("/")[1]))
+                if x == 0:
+                        messagebox.showerror("Error","Division by 0 not supported")
+                        A = ""
+                        val = ""
+                        data.set(val)
+                else:
+                        C = int(A / x)
+                        data.set(C)
+                        val = str(C)
 
 root = tkinter.Tk()
 
@@ -10,13 +146,14 @@ root.resizable(0, 0)                    #to enable/disable maximize
 
 root.title("Calculator")
 
-
+data = StringVar()
 lbl = Label(                    #for main frame of root 
         root,
         text = "Label",
         anchor = SE,
         font = ("Verdana", 20),
         bg="white",
+        textvariable = data,
         )
 lbl.pack(expand=True, fill = "both",)
 
@@ -53,6 +190,7 @@ btn1 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_1_isclicked,
         )
 btn1.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -62,6 +200,7 @@ btn2 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_2_isclicked,
         )
 btn2.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -73,6 +212,7 @@ btn3 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_3_isclicked,
         )
 btn3.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -83,6 +223,7 @@ btnplus = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_plus_clicked,
         )
 btnplus.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -97,6 +238,7 @@ btn4 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_4_isclicked,
         )
 btn4.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -106,20 +248,19 @@ btn5 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_5_isclicked,
         )
 btn5.pack(side= LEFT, expand=True, fill = "both",)
-
-
 
 btn6 = Button(
         btnrow2,
         text = "6",
         font = ("Verdana", 22),
         relief = GROOVE,
-        border = 0,   
+        border = 0,
+        command = btn_6_isclicked,
         )
 btn6.pack(side= LEFT, expand=True, fill = "both",)
-
 
 btnminus = Button(
         btnrow2,
@@ -127,6 +268,7 @@ btnminus = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_minus_clicked,
         )
 btnminus.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -141,6 +283,7 @@ btn7 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_7_isclicked,
         )
 btn7.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -150,6 +293,7 @@ btn8 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_8_isclicked,
         )
 btn8.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -161,6 +305,7 @@ btn9 = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_9_isclicked,
         )
 btn9.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -171,6 +316,7 @@ btnmul = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_mul_clicked,
         )
 btnmul.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -184,6 +330,7 @@ btn_clear = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = c_pressed,
         )
 btn_clear.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -193,6 +340,7 @@ btn_zero = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_0_isclicked,
         )
 btn_zero.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -203,6 +351,7 @@ btn_equal = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = result,
         )
 btn_equal.pack(side= LEFT, expand=True, fill = "both",)
 
@@ -213,6 +362,7 @@ btn_divide = Button(
         font = ("Verdana", 22),
         relief = GROOVE,
         border = 0,
+        command = btn_divide_clicked,
         )
 btn_divide.pack(side= LEFT, expand=True, fill = "both",)
 
